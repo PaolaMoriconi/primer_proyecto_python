@@ -53,4 +53,4 @@ Nuestro objetivo con este proyecto fue desarrollar un jueguito interactivo que t
 ## 🌟 **¿Cómo lo corrés?**  
 1. Cloná el repositorio:  
    ```bash
-   git clone <URL-del-repositorio>
+   git clone <https://github.com/PaolaMoriconi/primer_proyecto_python.git>
