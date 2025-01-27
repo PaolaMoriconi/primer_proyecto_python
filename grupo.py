@@ -14,16 +14,17 @@ def leer_archivo_como_array(ruta_archivo):
 
 # Definir la dificultad del juego
 def seleccionar_dificultad():
-    dificultad = input("Selecciona la dificultad: facil, medio, dificil: ").lower()
+    print("\033[1;3m🌟¡Bienvenido al juego del Ahorcado!\033[0m🌟")
+    dificultad = input("\033[1;3m Selecciona la dificultad:\033[0m 🟢 Facil, 🟡 Medio,🔴 Dificil: ").lower()
     while dificultad not in ["facil", "medio", "dificil"]:
-        print("Por favor, selecciona una dificultad valida")
-        dificultad = input("ingresa la dificultad: facil, medio, dificil: ")
+        print("❌ Por favor, selecciona una dificultad valida")
+        dificultad = input("ingresa la dificultad: Facil 🟢, Medio 🟡, Dificil🔴: ")
     return dificultad
 
 # Definir los parametros del juego segun la dificultad
 def set_parametros(dificultad):
     if dificultad == "facil":
-        return {"vidas": 3, "ruta_archivo": './palabras_facil.txt'}
+        return {"vidas": 3 , "ruta_archivo": './palabras_facil.txt'}
     elif dificultad == "medio":
         return {"vidas": 5, "ruta_archivo": './palabras_medio.txt'}
     elif dificultad == "dificil":
@@ -31,10 +32,10 @@ def set_parametros(dificultad):
     
 # Capturar la letra ingresando por el usuario
 def capturar_letra():
-    letra = input("Ingresa una letra: ")
+    letra = input("🔤Ingresa una letra: ")
     while not re.match("^[a-zA-Z]*$", letra) or len(letra) != 1:
-        print("Por favor, ingresa una letra valida")
-        letra = input("Ingresa una letra: ")
+        print("⚠️Por favor, ingresa una letra valida")
+        letra = input("🔤Ingresa una letra: ")
     return letra
 
 #Seteo parametros
@@ -59,7 +60,7 @@ end_game = False
 caracteres_incorrectos = []
 respuesta = ['_'] * len(palabra_selecionada)
 
-print(f"La palabra seleccionada contiene {len(palabra_selecionada)} caracteres")
+print(f" La palabra seleccionada contiene {len(palabra_selecionada)} caracteres")
 print("\n")
 
 while end_game == False:
@@ -87,15 +88,15 @@ while end_game == False:
         print("\n")
         if respuesta == list(palabra_selecionada):
             end_game = True
-            print("Ganaste")
+            print("Ganaste  🎉")
             print("\n")
     else:
         caracteres_incorrectos.append(letra_usuario)
-        print("La letra no está en la palabra")
+        print("\033[1;3m La letra no está en la palabra \033[0m")
         print("\n")
         vidas -= 1
     
     if vidas == 0:
         end_game = True
-        print(f"Fin del juego, te quedaste sin vidas. La palabra era: {palabra_selecionada}")
+        print(f" 💀Fin del juego, te quedaste sin vidas. La palabra era: {palabra_selecionada}")
         print("\n")
