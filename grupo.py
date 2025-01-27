@@ -83,7 +83,7 @@ while end_game == False:
             if letra == letra_usuario:            
                 respuesta[indice] = letra_usuario
         
-        print(''.join(respuesta))
+        print(''.join(respuesta).upper())
         print("\n")
         if respuesta == list(palabra_selecionada):
             end_game = True
