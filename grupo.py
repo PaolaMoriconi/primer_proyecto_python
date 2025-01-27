@@ -62,3 +62,40 @@ respuesta = ['_'] * len(palabra_selecionada)
 print(f"La palabra seleccionada contiene {len(palabra_selecionada)} caracteres")
 print("\n")
 
+while end_game == False:
+    print(f"candidad de vidas {vidas}")
+    print("\n")
+
+    if len(caracteres_incorrectos) > 0:
+        print(f"los caracteres incorrectos seleccionados son: {caracteres_incorrectos}")
+        continuar = input("Desea continuar, ingrese no para abandonar el juego. Con cualquier otra letra continuara: ")
+        if continuar.lower() == "no":
+            print(f"Decidio abandonar el juego, la palabra era: {palabra_selecionada}. Usted perdio")
+            break
+
+    print(''.join(respuesta).upper())
+    print("\n")
+    
+    letra_usuario = capturar_letra().lower()
+
+    if letra_usuario in palabra_selecionada:
+        for indice, letra in enumerate(palabra_selecionada):
+            if letra == letra_usuario:            
+                respuesta[indice] = letra_usuario
+        
+        print(''.join(respuesta))
+        print("\n")
+        if respuesta == list(palabra_selecionada):
+            end_game = True
+            print("Ganaste")
+            print("\n")
+    else:
+        caracteres_incorrectos.append(letra_usuario)
+        print("La letra no está en la palabra")
+        print("\n")
+        vidas -= 1
+    
+    if vidas == 0:
+        end_game = True
+        print(f"Fin del juego, te quedaste sin vidas. La palabra era: {palabra_selecionada}")
+        print("\n")
